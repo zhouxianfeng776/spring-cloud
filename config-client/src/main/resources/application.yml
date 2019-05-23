@@ -1,13 +1,5 @@
 server:
-  port: 8082
-
-spring:
-  application:
-    name: eureka-client
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://user:password@localhost:8761/eureka/,http://user:password@localhost:8762/eureka/,http://user:password@localhost:8763/eureka/
+  port: 8019
 
 management:
   endpoints:
@@ -15,13 +7,17 @@ management:
       exposure:
         include: "info,health,service-registry,features"
 
-test: test1
 ---
 spring:
-  profiles: peer1
+  profiles: native
+  cloud:
+    config:
+      server:
+        native:
+          searchLocations: file:/F:/demo/subdir
 
 server:
-  port: 8014
+  port: 8017
 
 test: peer1
 
@@ -30,4 +26,3 @@ eureka:
     serviceUrl:
       defaultZone: http://user:password@localhost:8761/eureka/,http://user:password@localhost:8762/eureka/,http://user:password@localhost:8763/eureka/
 
-isException: true

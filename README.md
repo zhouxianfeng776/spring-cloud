@@ -23,3 +23,15 @@
 >   >zuul (路由控制和过滤--网关)
 ----------------
 >   spring Feign   
+
+# 2.注意。
+##  2.1 bootstarp和application配置文件的区别。
+
+>    bootstarp引导程序（parentApplication），一般会去配置中加载配置文件 <br />
+     spring.application.name: myapp<br />
+     spring.cloud.config.uri: http://myconfigserver.com<br />
+     <br />
+     application为mainApplication启动需要的配置文件
+     
+     
+    

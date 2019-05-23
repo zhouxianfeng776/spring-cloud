@@ -1,9 +1,15 @@
 server:
-  port: 8082
+  port: 8015
+
+debug: true
 
 spring:
   application:
-    name: eureka-client
+    name: spring-retry
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
 eureka:
   client:
     serviceUrl:
@@ -13,17 +19,19 @@ management:
   endpoints:
     web:
       exposure:
-        include: "info,health,service-registry,features"
+        include: "info,health,service-registry"
 
-test: test1
+eureka-client:
+  ribbon:
+    MaxAutoRetries: 1
+    MaxAutoRetriesNextServer: 1
+    retryableStatusCodes: 500
 ---
 spring:
   profiles: peer1
 
 server:
   port: 8014
-
-test: peer1
 
 eureka:
   client:
